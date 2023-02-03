@@ -36,21 +36,21 @@ require 'db_conn.php';
             $latihan = $conn->query('SELECT * FROM latihan1 ORDER BY id DESC ');
         ?>
         <div class="show-todo-section">            
-            <?php while($todo = $latihan->fetch(PDO::FETCH_ASSOC)) { ?>
+            <?php while($kegiatan = $latihan->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="todo-item">
-                    <span href="app/delete.php" id="<?php echo $todo['id']; ?>"
+                    <span href="app/delete.php" id="<?php echo $kegiatan['id']; ?>"
                           class="remove-to-do">x</span>
-                          <?php if($todo['status']){ ?> 
+                          <?php if($kegiatan['status']){ ?> 
                             <input type="checkbox"
                             class="check-box"
-                            data-todo-id ="<?php echo $todo['id']; ?>"
+                            data-todo-id ="<?php echo $kegiatan['id']; ?>"
                             checked />
-                            <h2 class="checked"><?php echo $todo['kegiatan'] ?></h2>
+                            <h2 class="checked"><?php echo $kegiatan['kegiatan'] ?></h2>
                             <?php }else { ?>
                                 <input type="checkbox"
-                                data-todo-id ="<?php echo $todo['id']; ?>"
+                                data-todo-id ="<?php echo $kegiatan['id']; ?>"
                                 class="check-box" />
-                                <h2><?php echo $todo['kegiatan'] ?></h2>
+                                <h2><?php echo $kegiatan['kegiatan'] ?></h2>
                     <?php } ?>
                 </div>
             <?php } ?>

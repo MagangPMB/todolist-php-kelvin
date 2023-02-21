@@ -5,7 +5,7 @@
         $id = $_POST['id'];
 
         if(empty($id)){
-            echo 0;
+            echo 'error';
         }else{
             $stmt = $conn->prepare("DELETE FROM latihan1 WHERE id=?");
             $res = $stmt->execute([$id]);

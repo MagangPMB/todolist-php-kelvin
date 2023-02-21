@@ -19,5 +19,5 @@
             exit();
         }
     }else {
-        header("Location: ../index.php?mess=error");
+        header("Location: ../index.php");
     }

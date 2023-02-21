@@ -38,18 +38,14 @@ require 'db_conn.php';
         <div class="show-todo-section">            
             <?php while($kegiatan = $latihan->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="todo-item">
-                    <td class="contact-delete">
+                
                         <form action='app/delete.php?id="<?php echo $kegiatan['id']; ?>"' method="post">
                             <input type="hidden" name="id" value="<?php echo $kegiatan['id']; ?>">
-                            <input type="submit" name="submit" value="Delete" >
+                            <input type="submit" name="submit" value="Hapus" >
                             <input type="submit" name="submit" value="Selesai">
                         </form>
-                    </td>
-                          <?php if($kegiatan['status']){ ?> 
-                            <h2 class="checked"><?php echo $kegiatan['kegiatan'] ?></h2>
-                            <?php }else { ?>
-                                <h2><?php echo $kegiatan['kegiatan'] ?></h2>
-                    <?php } ?>
+                    
+                    <h2><?php echo $kegiatan['kegiatan'] ?></h2>
                 </div>
             <?php } ?>
         </div>

@@ -38,67 +38,21 @@ require 'db_conn.php';
         <div class="show-todo-section">            
             <?php while($kegiatan = $latihan->fetch(PDO::FETCH_ASSOC)) { ?>
                 <div class="todo-item">
-                    <span href="app/delete.php" id="<?php echo $kegiatan['id']; ?>"
-                          class="remove-to-do">x</span>
+                    <td class="contact-delete">
+                        <form action='app/delete.php?id="<?php echo $kegiatan['id']; ?>"' method="post">
+                            <input type="hidden" name="id" value="<?php echo $kegiatan['id']; ?>">
+                            <input type="submit" name="submit" value="Delete" >
+                            <input type="submit" name="submit" value="Selesai">
+                        </form>
+                    </td>
                           <?php if($kegiatan['status']){ ?> 
-                            <input type="checkbox"
-                            class="check-box"
-                            data-todo-id ="<?php echo $kegiatan['id']; ?>"
-                            checked />
                             <h2 class="checked"><?php echo $kegiatan['kegiatan'] ?></h2>
                             <?php }else { ?>
-                                <input type="checkbox"
-                                data-todo-id ="<?php echo $kegiatan['id']; ?>"
-                                class="check-box" />
                                 <h2><?php echo $kegiatan['kegiatan'] ?></h2>
                     <?php } ?>
                 </div>
             <?php } ?>
         </div>
         </div>
-        <script src="js/jquery-3.2.1.min.js"></script>
-
-        <script>
-            $(document).ready(function(){
-                $('.remove-to-do').click(function(){
-                    const id = $(this).attr('id');
-
-                    $.post("app/delete.php",
-                    {
-                        id : id
-                    },
-                    (data) => {
-                        // alert(data);
-                        if(data){
-                            $(this).parent().hide(600);
-                        }
-                    }
-                );    
-                });
-
-            $(".check-box").click(function(e){
-                const id = $(this).attr('data-todo-id');
-
-                $.post('app/centang.php',
-                {
-                    id : id
-                },
-                (data) => {
-                    if(data != 'error'){
-                        const h2 =$(this).next();
-                        if(data === '1'){
-                            h2.removeClass('checked');
-                        }else{
-                            h2.addClass('checked');
-                        }
-
-                    }
-                }
-                );
-            });
-        });
-        
-
-       </script>
 </body>
 </html>

@@ -11,10 +11,10 @@
             $res = $stmt->execute([$id]);
 
             if($res){
-            echo 1;
-            }else {
-            echo 0;
-            }
+                header("Location: ../index.php?mess=success");
+                }else {
+                header("Location: ../index.php");
+                }
             $conn = null;
             exit();
         }
